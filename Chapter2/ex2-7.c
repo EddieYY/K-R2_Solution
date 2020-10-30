@@ -6,7 +6,7 @@
  */
 
 #include <stdio.h>
-
+#include <stdbool.h>
 unsigned invert(unsigned x, int p, int n);
 
 
@@ -26,11 +26,25 @@ unsigned invert(unsigned x, int p, int n)
 	return (x&mask) | (~x &~mask);
 }
 */
-
+bool getBit(int n, int index);
 int main(void)
 {
+	int num = 90, index;
+
+    	printf("Input\n");
+	for (int i = 7; i >= 0; i--) 
+		printf("%d", getBit(num,i));
+    	printf("\n");
+
 	printf("%d\n", invert(90, 4, 3));
+	for (int i = 7; i >= 0; i--) 
+		printf("%d", getBit(invert(90, 4, 3), i));
+
 	return 0;
+}
+
+bool getBit(int n, int index) {
+	return ((n & (1 << index)) > 0);
 }
 
 unsigned invert(unsigned x, int p, int n)
